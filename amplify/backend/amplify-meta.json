@@ -1,0 +1,87 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-healthcarenaukriexpo-dev-223819-authRole",
+      "UnauthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukriexpo-dev-223819-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukriexpo-dev-223819-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-healthcarenaukriexpo-dev-223819-deployment",
+      "UnauthRoleName": "amplify-healthcarenaukriexpo-dev-223819-unauthRole",
+      "StackName": "amplify-healthcarenaukriexpo-dev-223819",
+      "StackId": "arn:aws:cloudformation:us-east-1:858361418733:stack/amplify-healthcarenaukriexpo-dev-223819/7ab74d70-53ea-11ee-a3c2-0a0a2e1f820f",
+      "AmplifyAppId": "d2pvhgb4hhai0p"
+    }
+  },
+  "api": {
+    "healthcarenaukriexpo": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "ozkjqca6yva7ha2a3foa2sle54",
+        "GraphQLAPIEndpointOutput": "https://56ozxddmofftja4cexuv5i7mkm.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-os66zsvbizagzcpi7x6zwsnsnm"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-09-27T19:35:59.661Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukriexpo-dev-223819-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apihealthcarenaukriexpo"
+      },
+      "lastPushDirHash": "ehSBZX82sc7TnGL+8zpAiYyZqKQ="
+    }
+  },
+  "auth": {
+    "healthcarenaukriexpo19a85b5a": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_EztlksTJO",
+        "AppClientIDWeb": "48jsei3s3n754vk8drpfh4tomf",
+        "AppClientID": "323g2v7enm0l3pmhoc8e6v5ns9",
+        "IdentityPoolId": "us-east-1:2a9c0c79-c815-49a4-b169-97ecbcbc4cfc",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:858361418733:userpool/us-east-1_EztlksTJO",
+        "IdentityPoolName": "healthcarenaukriexpo19a85b5a_identitypool_19a85b5a__dev",
+        "UserPoolName": "healthcarenaukriexpo19a85b5a_userpool_19a85b5a"
+      },
+      "lastPushTimeStamp": "2023-09-27T19:35:59.664Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukriexpo-dev-223819-deployment/amplify-cfn-templates/auth/healthcarenaukriexpo19a85b5a-cloudformation-template.json",
+        "logicalId": "authhealthcarenaukriexpo19a85b5a"
+      }
+    }
+  }
+}

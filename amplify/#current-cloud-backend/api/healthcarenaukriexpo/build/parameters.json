@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "healthcarenaukriexpo",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-healthcarenaukriexpo-dev-223819-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/f8618d1f5e70033ca1f59d5a8500339ede01919a"
+}
