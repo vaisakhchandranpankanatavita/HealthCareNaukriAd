@@ -27,12 +27,10 @@ import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+import usersTableData from "layouts/tables/data/usersTableData";
 
 function Tables() {
-  const { columns, rows } = authorsTableData;
-  const { columns: prCols, rows: prRows } = projectsTableData;
+  const { columns, rows } = usersTableData;
 
   return (
     <DashboardLayout>
@@ -40,8 +38,8 @@ function Tables() {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">Authors table</SoftTypography>
+            <SoftBox display="flex" justifyContent="space-between" alignItems="left" p={3}>
+              <SoftTypography variant="h6">User Manager </SoftTypography>
             </SoftBox>
             <SoftBox
               sx={{
@@ -57,23 +55,6 @@ function Tables() {
             </SoftBox>
           </Card>
         </SoftBox>
-        <Card>
-          <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-            <SoftTypography variant="h6">Projects table</SoftTypography>
-          </SoftBox>
-          <SoftBox
-            sx={{
-              "& .MuiTableRow-root:not(:last-child)": {
-                "& td": {
-                  borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                    `${borderWidth[1]} solid ${borderColor}`,
-                },
-              },
-            }}
-          >
-            <Table columns={prCols} rows={prRows} />
-          </SoftBox>
-        </Card>
       </SoftBox>
       <Footer />
     </DashboardLayout>

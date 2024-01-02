@@ -20,6 +20,8 @@ import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { DataStore } from 'aws-amplify/datastore';
+import { UserProfile } from '../../../../models';
 
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
@@ -64,7 +66,7 @@ function Projects() {
       <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <SoftBox>
           <SoftTypography variant="h6" gutterBottom>
-            Projects
+            Recent Registrations
           </SoftTypography>
           <SoftBox display="flex" alignItems="center" lineHeight={0}>
             <Icon
@@ -77,7 +79,7 @@ function Projects() {
               done
             </Icon>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this month
+              &nbsp;<strong>30 done</strong> this week
             </SoftTypography>
           </SoftBox>
         </SoftBox>

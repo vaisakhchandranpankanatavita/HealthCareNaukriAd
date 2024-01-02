@@ -1,0 +1,77 @@
+type JobCategory @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  category_name: String!
+  status: Boolean!
+}
+
+type Application @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: String!
+  job_id: String!
+  status: Boolean!
+}
+
+type Job @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  recruiter_name: String
+  phone: String
+  title: String
+  description: String
+  location: String
+  email: AWSEmail
+  city: String
+  state: String
+  country: String
+  qualification: String
+  experience_required: Int
+  skills_required: [String]
+  category: String
+  status: String
+  approved: Boolean!
+  recruiterID: ID! @index(name: "byRecruiter")
+}
+
+type Recruiter @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  hospital_name: String!
+  contact_name: String!
+  email: AWSEmail!
+  land_line: String
+  mobile: AWSPhone!
+  password: String!
+  address: String
+  city: String
+  state: String
+  country: String
+  photo: AWSURL
+  website: AWSURL
+  facebook: AWSURL
+  twitter: AWSURL
+  recruiter_details: String
+  approved: Boolean!
+  Jobs: [Job] @hasMany(indexName: "byRecruiter", fields: ["id"])
+  is_super_admin: Boolean!
+}
+
+type Experience {
+  hospital_name: String
+  designation: String
+  no_of_years: Int
+}
+
+type UserProfile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  email: AWSEmail!
+  phone: AWSPhone!
+  country: String!
+  state: String!
+  dob: AWSDate!
+  nursing_council: String
+  additional_qualification: String
+  experience: [Experience]
+  resume: AWSURL
+  photo: AWSURL
+  applied_jobs: [ID]
+}
+ 

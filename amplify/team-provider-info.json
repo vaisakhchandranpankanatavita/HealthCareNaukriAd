@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-healthcarenaukri-staging-175045-authRole",
+      "UnauthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukri-staging-175045-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukri-staging-175045-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-healthcarenaukri-staging-175045-deployment",
+      "UnauthRoleName": "amplify-healthcarenaukri-staging-175045-unauthRole",
+      "StackName": "amplify-healthcarenaukri-staging-175045",
+      "StackId": "arn:aws:cloudformation:us-east-1:858361418733:stack/amplify-healthcarenaukri-staging-175045/244fd600-99e0-11ee-8c1a-0e10f4f07403",
+      "AmplifyAppId": "d2a18z9hp7go46"
+    },
+    "categories": {
+      "auth": {
+        "HealthCareNaukri": {}
+      }
+    }
+  }
+}
