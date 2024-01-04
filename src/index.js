@@ -24,11 +24,10 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 import { Authenticator } from '@aws-amplify/ui-react';
-
-Amplify.configure(config);
-
 // Soft UI Dashboard React Context Provider
 import { SoftUIControllerProvider } from "context";
+
+Amplify.configure(config);
 
 const AppWithAuth =  () => (<Authenticator signUpAttributes={[
   'name',
