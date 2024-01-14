@@ -1,8 +1,7 @@
-#if( $ctx.stash.deniedField )
+#if( $ctx.source.deniedField )
   #return($util.toJson(null))
 #end
-#set( $partitionKeyValue = $util.defaultIfNull($ctx.stash.connectionAttributes.get("id"), $ctx.source.id) )
-#if( $util.isNull($partitionKeyValue) )
+#if( $util.isNull($ctx.source.id) )
   #set( $result = {
   "items":   []
 } )
@@ -15,7 +14,7 @@
       "#partitionKey": "recruiterID"
   },
   "expressionValues": {
-      ":partitionKey": $util.dynamodb.toDynamoDB($partitionKeyValue)
+      ":partitionKey": $util.dynamodb.toDynamoDB($context.source.id)
   }
 } )
   #set( $args = $util.defaultIfNull($ctx.stash.transformedArgs, $ctx.args) )

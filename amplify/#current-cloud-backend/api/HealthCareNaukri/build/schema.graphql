@@ -1,3 +1,4 @@
+
 type JobCategory @aws_iam @aws_api_key {
   id: ID!
   category_name: String!
@@ -263,7 +264,6 @@ input ModelJobCategoryFilterInput {
   and: [ModelJobCategoryFilterInput]
   or: [ModelJobCategoryFilterInput]
   not: ModelJobCategoryFilterInput
-  _deleted: ModelBooleanInput
 }
 
 type Query {
@@ -291,7 +291,6 @@ input ModelJobCategoryConditionInput {
   and: [ModelJobCategoryConditionInput]
   or: [ModelJobCategoryConditionInput]
   not: ModelJobCategoryConditionInput
-  _deleted: ModelBooleanInput
 }
 
 input CreateJobCategoryInput {
@@ -331,31 +330,22 @@ type Mutation {
   deleteUserProfile(input: DeleteUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
 }
 
-input ModelSubscriptionJobCategoryFilterInput {
-  id: ModelSubscriptionIDInput
-  category_name: ModelSubscriptionStringInput
-  status: ModelSubscriptionBooleanInput
-  and: [ModelSubscriptionJobCategoryFilterInput]
-  or: [ModelSubscriptionJobCategoryFilterInput]
-  _deleted: ModelBooleanInput
-}
-
 type Subscription {
-  onCreateJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["createJobCategory"]) @aws_api_key @aws_iam
-  onUpdateJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["updateJobCategory"]) @aws_api_key @aws_iam
-  onDeleteJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["deleteJobCategory"]) @aws_api_key @aws_iam
-  onCreateApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["createApplication"]) @aws_api_key @aws_iam
-  onUpdateApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["updateApplication"]) @aws_api_key @aws_iam
-  onDeleteApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["deleteApplication"]) @aws_api_key @aws_iam
-  onCreateJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["createJob"]) @aws_api_key @aws_iam
-  onUpdateJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["updateJob"]) @aws_api_key @aws_iam
-  onDeleteJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["deleteJob"]) @aws_api_key @aws_iam
-  onCreateRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["createRecruiter"]) @aws_api_key @aws_iam
-  onUpdateRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["updateRecruiter"]) @aws_api_key @aws_iam
-  onDeleteRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["deleteRecruiter"]) @aws_api_key @aws_iam
-  onCreateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["createUserProfile"]) @aws_api_key @aws_iam
-  onUpdateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["updateUserProfile"]) @aws_api_key @aws_iam
-  onDeleteUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["deleteUserProfile"]) @aws_api_key @aws_iam
+  onCreateJobCategory: JobCategory @aws_subscribe(mutations: ["createJobCategory"]) @aws_api_key @aws_iam
+  onUpdateJobCategory: JobCategory @aws_subscribe(mutations: ["updateJobCategory"]) @aws_api_key @aws_iam
+  onDeleteJobCategory: JobCategory @aws_subscribe(mutations: ["deleteJobCategory"]) @aws_api_key @aws_iam
+  onCreateApplication: Application @aws_subscribe(mutations: ["createApplication"]) @aws_api_key @aws_iam
+  onUpdateApplication: Application @aws_subscribe(mutations: ["updateApplication"]) @aws_api_key @aws_iam
+  onDeleteApplication: Application @aws_subscribe(mutations: ["deleteApplication"]) @aws_api_key @aws_iam
+  onCreateJob: Job @aws_subscribe(mutations: ["createJob"]) @aws_api_key @aws_iam
+  onUpdateJob: Job @aws_subscribe(mutations: ["updateJob"]) @aws_api_key @aws_iam
+  onDeleteJob: Job @aws_subscribe(mutations: ["deleteJob"]) @aws_api_key @aws_iam
+  onCreateRecruiter: Recruiter @aws_subscribe(mutations: ["createRecruiter"]) @aws_api_key @aws_iam
+  onUpdateRecruiter: Recruiter @aws_subscribe(mutations: ["updateRecruiter"]) @aws_api_key @aws_iam
+  onDeleteRecruiter: Recruiter @aws_subscribe(mutations: ["deleteRecruiter"]) @aws_api_key @aws_iam
+  onCreateUserProfile: UserProfile @aws_subscribe(mutations: ["createUserProfile"]) @aws_api_key @aws_iam
+  onUpdateUserProfile: UserProfile @aws_subscribe(mutations: ["updateUserProfile"]) @aws_api_key @aws_iam
+  onDeleteUserProfile: UserProfile @aws_subscribe(mutations: ["deleteUserProfile"]) @aws_api_key @aws_iam
 }
 
 type ModelApplicationConnection @aws_api_key @aws_iam {
@@ -372,7 +362,6 @@ input ModelApplicationFilterInput {
   and: [ModelApplicationFilterInput]
   or: [ModelApplicationFilterInput]
   not: ModelApplicationFilterInput
-  _deleted: ModelBooleanInput
 }
 
 input ModelApplicationConditionInput {
@@ -382,7 +371,6 @@ input ModelApplicationConditionInput {
   and: [ModelApplicationConditionInput]
   or: [ModelApplicationConditionInput]
   not: ModelApplicationConditionInput
-  _deleted: ModelBooleanInput
 }
 
 input CreateApplicationInput {
@@ -404,16 +392,6 @@ input UpdateApplicationInput {
 input DeleteApplicationInput {
   id: ID!
   _version: Int
-}
-
-input ModelSubscriptionApplicationFilterInput {
-  id: ModelSubscriptionIDInput
-  user_id: ModelSubscriptionStringInput
-  job_id: ModelSubscriptionStringInput
-  status: ModelSubscriptionBooleanInput
-  and: [ModelSubscriptionApplicationFilterInput]
-  or: [ModelSubscriptionApplicationFilterInput]
-  _deleted: ModelBooleanInput
 }
 
 type ModelJobConnection @aws_api_key @aws_iam {
@@ -443,7 +421,6 @@ input ModelJobFilterInput {
   and: [ModelJobFilterInput]
   or: [ModelJobFilterInput]
   not: ModelJobFilterInput
-  _deleted: ModelBooleanInput
 }
 
 input ModelJobConditionInput {
@@ -466,7 +443,6 @@ input ModelJobConditionInput {
   and: [ModelJobConditionInput]
   or: [ModelJobConditionInput]
   not: ModelJobConditionInput
-  _deleted: ModelBooleanInput
 }
 
 input CreateJobInput {
@@ -516,29 +492,6 @@ input DeleteJobInput {
   _version: Int
 }
 
-input ModelSubscriptionJobFilterInput {
-  id: ModelSubscriptionIDInput
-  recruiter_name: ModelSubscriptionStringInput
-  phone: ModelSubscriptionStringInput
-  title: ModelSubscriptionStringInput
-  description: ModelSubscriptionStringInput
-  location: ModelSubscriptionStringInput
-  email: ModelSubscriptionStringInput
-  city: ModelSubscriptionStringInput
-  state: ModelSubscriptionStringInput
-  country: ModelSubscriptionStringInput
-  qualification: ModelSubscriptionStringInput
-  experience_required: ModelSubscriptionIntInput
-  skills_required: ModelSubscriptionStringInput
-  category: ModelSubscriptionStringInput
-  status: ModelSubscriptionStringInput
-  approved: ModelSubscriptionBooleanInput
-  recruiterID: ModelSubscriptionIDInput
-  and: [ModelSubscriptionJobFilterInput]
-  or: [ModelSubscriptionJobFilterInput]
-  _deleted: ModelBooleanInput
-}
-
 type ModelRecruiterConnection @aws_api_key @aws_iam {
   items: [Recruiter]!
   nextToken: String
@@ -567,7 +520,6 @@ input ModelRecruiterFilterInput {
   and: [ModelRecruiterFilterInput]
   or: [ModelRecruiterFilterInput]
   not: ModelRecruiterFilterInput
-  _deleted: ModelBooleanInput
 }
 
 input ModelRecruiterConditionInput {
@@ -591,7 +543,6 @@ input ModelRecruiterConditionInput {
   and: [ModelRecruiterConditionInput]
   or: [ModelRecruiterConditionInput]
   not: ModelRecruiterConditionInput
-  _deleted: ModelBooleanInput
 }
 
 input CreateRecruiterInput {
@@ -643,30 +594,6 @@ input DeleteRecruiterInput {
   _version: Int
 }
 
-input ModelSubscriptionRecruiterFilterInput {
-  id: ModelSubscriptionIDInput
-  hospital_name: ModelSubscriptionStringInput
-  contact_name: ModelSubscriptionStringInput
-  email: ModelSubscriptionStringInput
-  land_line: ModelSubscriptionStringInput
-  mobile: ModelSubscriptionStringInput
-  password: ModelSubscriptionStringInput
-  address: ModelSubscriptionStringInput
-  city: ModelSubscriptionStringInput
-  state: ModelSubscriptionStringInput
-  country: ModelSubscriptionStringInput
-  photo: ModelSubscriptionStringInput
-  website: ModelSubscriptionStringInput
-  facebook: ModelSubscriptionStringInput
-  twitter: ModelSubscriptionStringInput
-  recruiter_details: ModelSubscriptionStringInput
-  approved: ModelSubscriptionBooleanInput
-  is_super_admin: ModelSubscriptionBooleanInput
-  and: [ModelSubscriptionRecruiterFilterInput]
-  or: [ModelSubscriptionRecruiterFilterInput]
-  _deleted: ModelBooleanInput
-}
-
 input ExperienceInput {
   hospital_name: String
   designation: String
@@ -695,7 +622,6 @@ input ModelUserProfileFilterInput {
   and: [ModelUserProfileFilterInput]
   or: [ModelUserProfileFilterInput]
   not: ModelUserProfileFilterInput
-  _deleted: ModelBooleanInput
 }
 
 input ModelUserProfileConditionInput {
@@ -713,7 +639,6 @@ input ModelUserProfileConditionInput {
   and: [ModelUserProfileConditionInput]
   or: [ModelUserProfileConditionInput]
   not: ModelUserProfileConditionInput
-  _deleted: ModelBooleanInput
 }
 
 input CreateUserProfileInput {
@@ -755,20 +680,3 @@ input DeleteUserProfileInput {
   _version: Int
 }
 
-input ModelSubscriptionUserProfileFilterInput {
-  id: ModelSubscriptionIDInput
-  name: ModelSubscriptionStringInput
-  email: ModelSubscriptionStringInput
-  phone: ModelSubscriptionStringInput
-  country: ModelSubscriptionStringInput
-  state: ModelSubscriptionStringInput
-  dob: ModelSubscriptionStringInput
-  nursing_council: ModelSubscriptionStringInput
-  additional_qualification: ModelSubscriptionStringInput
-  resume: ModelSubscriptionStringInput
-  photo: ModelSubscriptionStringInput
-  applied_jobs: ModelSubscriptionIDInput
-  and: [ModelSubscriptionUserProfileFilterInput]
-  or: [ModelSubscriptionUserProfileFilterInput]
-  _deleted: ModelBooleanInput
-}

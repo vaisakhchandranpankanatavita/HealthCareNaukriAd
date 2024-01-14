@@ -251,8 +251,7 @@
                 "dynamodb:BatchWriteItem",
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:DescribeTable"
+                "dynamodb:DeleteItem"
               ],
               "Effect": "Allow",
               "Resource": [
@@ -456,8 +455,8 @@
             "Name"
           ]
         },
-        "Name": "QueryGetRecruiterDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "QueryGetRecruiterDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -532,11 +531,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -552,7 +551,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -571,8 +570,8 @@
             "Name"
           ]
         },
-        "Name": "QueryListRecruitersDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "QueryListRecruitersDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -647,11 +646,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -667,7 +666,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -686,8 +685,8 @@
             "Name"
           ]
         },
-        "Name": "QuerySyncRecruitersDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "QuerySyncRecruitersDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -762,11 +761,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -782,7 +781,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -801,8 +800,8 @@
             "Name"
           ]
         },
-        "Name": "MutationCreateRecruiterDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "MutationCreateRecruiterDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -880,11 +879,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -900,7 +899,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -919,8 +918,8 @@
             "Name"
           ]
         },
-        "Name": "MutationupdateRecruiterauth0Function",
         "FunctionVersion": "2018-05-29",
+        "Name": "MutationupdateRecruiterauth0Function",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -970,8 +969,8 @@
             "Name"
           ]
         },
-        "Name": "MutationUpdateRecruiterDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "MutationUpdateRecruiterDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -1052,11 +1051,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -1072,7 +1071,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -1091,8 +1090,8 @@
             "Name"
           ]
         },
-        "Name": "MutationdeleteRecruiterauth0Function",
         "FunctionVersion": "2018-05-29",
+        "Name": "MutationdeleteRecruiterauth0Function",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -1142,8 +1141,8 @@
             "Name"
           ]
         },
-        "Name": "MutationDeleteRecruiterDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "MutationDeleteRecruiterDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -1221,11 +1220,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "RecruiterTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -1241,7 +1240,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -1278,7 +1277,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -1294,7 +1293,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -1331,7 +1330,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -1347,7 +1346,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },
@@ -1384,7 +1383,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -1400,7 +1399,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },

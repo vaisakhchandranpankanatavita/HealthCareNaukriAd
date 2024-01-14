@@ -1,6 +1,3 @@
 ## [Start] Subscription Response template. **
-#if( !$util.isNullOrEmpty($ctx.args.filter) )
-$extensions.setSubscriptionFilter($util.transform.toSubscriptionFilter($ctx.args.filter))
-#end
 $util.toJson(null)
 ## [End] Subscription Response template. **

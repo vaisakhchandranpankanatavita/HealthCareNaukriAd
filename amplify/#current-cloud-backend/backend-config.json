@@ -39,16 +39,13 @@
           ],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "NAME",
-          "PHONE_NUMBER"
-        ],
+        "signupAttributes": [],
         "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
         ],
         "verificationMechanisms": [
-          "PHONE_NUMBER"
+          "EMAIL"
         ]
       },
       "providerPlugin": "awscloudformation",

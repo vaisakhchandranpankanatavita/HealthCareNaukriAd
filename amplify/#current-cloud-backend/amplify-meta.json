@@ -36,7 +36,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-12-16T08:23:49.020Z",
+      "lastPushTimeStamp": "2024-01-14T13:21:55.221Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukri-staging-175045-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiHealthCareNaukri"
@@ -54,10 +54,7 @@
         "usernameAttributes": [
           "EMAIL"
         ],
-        "signupAttributes": [
-          "NAME",
-          "PHONE_NUMBER"
-        ],
+        "signupAttributes": [],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": [
@@ -71,25 +68,24 @@
           "SMS"
         ],
         "verificationMechanisms": [
-          "PHONE_NUMBER"
+          "EMAIL"
         ]
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukri-staging-175045-deployment/amplify-cfn-templates/auth/HealthCareNaukri-cloudformation-template.json",
         "logicalId": "authHealthCareNaukri"
       },
-      "lastPushTimeStamp": "2023-12-16T08:23:49.144Z",
+      "lastPushTimeStamp": "2024-01-14T13:21:55.355Z",
       "output": {
-        "CreatedSNSRole": "arn:aws:iam::858361418733:role/sns31448dbc175045-staging",
-        "UserPoolId": "us-east-1_T6h771acX",
-        "AppClientIDWeb": "4go24kk66kg24jbab8fhu3o24o",
-        "AppClientID": "4m0h09th79aqpp05erthpjjrg0",
-        "IdentityPoolId": "us-east-1:d3e1a098-06e3-42a0-902b-99bff4b3b108",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:858361418733:userpool/us-east-1_T6h771acX",
+        "UserPoolId": "us-east-1_xGQ4n7p2l",
+        "AppClientIDWeb": "8ptm3cc9mi7uphbb75vn5n350",
+        "AppClientID": "7g535a5781bh0u1o9r7eof64k2",
+        "IdentityPoolId": "us-east-1:a34d2662-cb2c-4b0f-9d0f-92887b85489d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:858361418733:userpool/us-east-1_xGQ4n7p2l",
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "HealthCareNaukri"
       },
-      "lastPushDirHash": "eVF+FEjdITCTQGTpK/lJBRQHcSc="
+      "lastPushDirHash": "xmccugTkRqGvXaaChKWQSQV2JEU="
     }
   }
 }

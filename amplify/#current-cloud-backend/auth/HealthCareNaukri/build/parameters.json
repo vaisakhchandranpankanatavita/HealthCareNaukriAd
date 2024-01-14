@@ -1,17 +1,17 @@
 {
   "identityPoolName": "testAuthIdentityPool",
   "allowUnauthenticatedIdentities": false,
-  "resourceNameTruncated": "health31448dbc",
+  "resourceNameTruncated": "healthbd637afe",
   "userPoolName": "HealthCareNaukri",
   "autoVerifiedAttributes": [
-    "phone_number"
+    "email"
   ],
   "mfaConfiguration": "OFF",
   "mfaTypes": [
     "SMS Text Message"
   ],
   "smsAuthenticationMessage": "Your authentication code is {####}",
-  "smsVerificationMessage": "Verification code: {####}",
+  "smsVerificationMessage": "Your verification code is {####}",
   "emailVerificationSubject": "Your verification code",
   "emailVerificationMessage": "Your verification code is {####}",
   "defaultPasswordPolicy": false,
@@ -21,24 +21,20 @@
     "Requires Numbers",
     "Requires Symbols"
   ],
-  "requiredAttributes": [
-    "name",
-    "phone_number"
-  ],
+  "requiredAttributes": [],
   "aliasAttributes": [],
   "userpoolClientGenerateSecret": false,
   "userpoolClientRefreshTokenValidity": 30,
   "userpoolClientWriteAttributes": [],
   "userpoolClientReadAttributes": [],
-  "userpoolClientLambdaRole": "Health31448dbc_userpoolclient_lambda_role",
+  "userpoolClientLambdaRole": "Healthbd637afe_userpoolclient_lambda_role",
   "userpoolClientSetAttributes": false,
-  "sharedId": "31448dbc",
+  "sharedId": "bd637afe",
   "resourceName": "HealthCareNaukri",
   "authSelections": "identityPoolAndUserPool",
   "serviceName": "Cognito",
   "usernameAttributes": [
-    "email",
-    "phone_number"
+    "email"
   ],
   "useDefault": "manual",
   "userPoolGroups": false,

@@ -9,8 +9,8 @@
         "DataSourceName": {
           "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
         },
-        "Name": "RecruiterJobsauth0Function",
         "FunctionVersion": "2018-05-29",
+        "Name": "RecruiterJobsauth0Function",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -39,8 +39,8 @@
         "DataSourceName": {
           "Ref": "referencetotransformerrootstackJobNestedStackJobNestedStackResource0250BB3EOutputstransformerrootstackJobJobDataSourceC51AAD63Name"
         },
-        "Name": "RecruiterJobsDataResolverFn",
         "FunctionVersion": "2018-05-29",
+        "Name": "RecruiterJobsDataResolverFn",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
             "",
@@ -112,11 +112,11 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
               {
                 "Ref": "referencetotransformerrootstackJobNestedStackJobNestedStackResource0250BB3EOutputstransformerrootstackJobJobTable9C8FA5E4Ref"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
               {
                 "Ref": "AWS::AccountId"
               },
@@ -132,7 +132,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_PdLhdjapO_Full-access/CognitoIdentityCredentials\",\"us-east-1_PdLhdjapO_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
             ]
           ]
         },

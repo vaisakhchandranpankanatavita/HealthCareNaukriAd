@@ -1,5 +1,5 @@
 {
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifyAdmin\",\"createdWith\":\"12.9.0-rc.e26f7b3d83e6ae1.0\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifyAdmin\",\"createdWith\":\"12.10.1-rc.73b08dc424db2fb.0\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "env": {
@@ -134,85 +134,18 @@
     }
   },
   "Resources": {
-    "SNSRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Sid": "",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "cognito-idp.amazonaws.com"
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ],
-              "Condition": {
-                "StringEquals": {
-                  "sts:ExternalId": "health31448dbc_role_external_id"
-                }
-              }
-            }
-          ]
-        },
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "sns:Publish"
-                  ],
-                  "Resource": "*"
-                }
-              ]
-            },
-            "PolicyName": "health31448dbc-sns-policy"
-          }
-        ],
-        "RoleName": {
-          "Fn::If": [
-            "ShouldNotCreateEnvResources",
-            "health31448dbc_sns-role",
-            {
-              "Fn::Join": [
-                "",
-                [
-                  "sns31448dbc",
-                  {
-                    "Fn::Select": [
-                      3,
-                      {
-                        "Fn::Split": [
-                          "-",
-                          {
-                            "Ref": "AWS::StackName"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "-",
-                  {
-                    "Ref": "env"
-                  }
-                ]
-              ]
-            }
-          ]
-        }
-      }
-    },
     "UserPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
         "AutoVerifiedAttributes": [
-          "phone_number"
+          "email"
         ],
+        "EmailVerificationMessage": {
+          "Ref": "emailVerificationMessage"
+        },
+        "EmailVerificationSubject": {
+          "Ref": "emailVerificationSubject"
+        },
         "MfaConfiguration": {
           "Ref": "mfaConfiguration"
         },
@@ -227,36 +160,9 @@
             "RequireUppercase": false
           }
         },
-        "Schema": [
-          {
-            "Mutable": true,
-            "Name": "name",
-            "Required": true
-          },
-          {
-            "Mutable": true,
-            "Name": "phone_number",
-            "Required": true
-          }
-        ],
-        "SmsAuthenticationMessage": {
-          "Ref": "smsAuthenticationMessage"
-        },
-        "SmsConfiguration": {
-          "ExternalId": "health31448dbc_role_external_id",
-          "SnsCallerArn": {
-            "Fn::GetAtt": [
-              "SNSRole",
-              "Arn"
-            ]
-          }
-        },
-        "SmsVerificationMessage": {
-          "Ref": "smsVerificationMessage"
-        },
         "UserAttributeUpdateSettings": {
           "AttributesRequireVerificationBeforeUpdate": [
-            "phone_number"
+            "email"
           ]
         },
         "UsernameAttributes": {
@@ -287,10 +193,7 @@
             }
           ]
         }
-      },
-      "DependsOn": [
-        "SNSRole"
-      ]
+      }
     },
     "UserPoolClientWeb": {
       "Type": "AWS::Cognito::UserPoolClient",
@@ -298,7 +201,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "health31448dbc_app_clientWeb",
+        "ClientName": "healthbd637afe_app_clientWeb",
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
         },
@@ -316,7 +219,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "health31448dbc_app_client",
+        "ClientName": "healthbd637afe_app_client",
         "GenerateSecret": {
           "Ref": "userpoolClientGenerateSecret"
         },
@@ -356,7 +259,7 @@
               "Fn::Join": [
                 "",
                 [
-                  "upClientLambdaRole31448dbc",
+                  "upClientLambdaRolebd637afe",
                   {
                     "Fn::Select": [
                       3,
@@ -509,15 +412,6 @@
       "Description": "The user pool app client id",
       "Value": {
         "Ref": "UserPoolClient"
-      }
-    },
-    "CreatedSNSRole": {
-      "Description": "role arn",
-      "Value": {
-        "Fn::GetAtt": [
-          "SNSRole",
-          "Arn"
-        ]
       }
     }
   }

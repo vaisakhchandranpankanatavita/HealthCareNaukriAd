@@ -36,6 +36,7 @@ import SoftInput from "components/SoftInput";
 // Soft UI Dashboard React examples
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 // Custom styles for DashboardNavbar
 import {
@@ -57,6 +58,9 @@ import {
 // Images
 import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
+
+//Amplify
+import { signOut } from 'aws-amplify/auth';
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -95,6 +99,15 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
+
+  async function handleSignOut() {
+    try {
+      await signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
+  
 
   // Render the notifications menu
   const renderMenu = () => (
@@ -147,59 +160,16 @@ function DashboardNavbar({ absolute, light, isMini }) {
         </SoftBox>
         {isMini ? null : (
           <SoftBox sx={(theme) => navbarRow(theme, { isMini })}>
-            <SoftBox pr={1}>
-              <SoftInput
-                placeholder="Type here..."
-                icon={{ component: "search", direction: "left" }}
-              />
-            </SoftBox>
             <SoftBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in">
-                <IconButton sx={navbarIconButton} size="small">
-                  <Icon
-                    sx={({ palette: { dark, white } }) => ({
-                      color: light ? white.main : dark.main,
-                    })}
-                  >
-                    account_circle
-                  </Icon>
-                  <SoftTypography
-                    variant="button"
-                    fontWeight="medium"
-                    color={light ? "white" : "dark"}
-                  >
-                    Sign in
-                  </SoftTypography>
-                </IconButton>
-              </Link>
-              <IconButton
-                size="small"
-                color="inherit"
-                sx={navbarMobileMenu}
-                onClick={handleMiniSidenav}
-              >
-                <Icon className={light ? "text-white" : "text-dark"}>
-                  {miniSidenav ? "menu_open" : "menu"}
-                </Icon>
-              </IconButton>
-              <IconButton
-                size="small"
-                color="inherit"
-                sx={navbarIconButton}
-                onClick={handleConfiguratorOpen}
-              >
-                <Icon>settings</Icon>
-              </IconButton>
-              <IconButton
-                size="small"
-                color="inherit"
-                sx={navbarIconButton}
-                aria-controls="notification-menu"
-                aria-haspopup="true"
-                variant="contained"
-                onClick={handleOpenMenu}
-              >
-                <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
+            <IconButton size="small" color="inherit" sx={navbarIconButton} onClick={handleSignOut}>
+                <ExitToAppIcon />
+                <SoftTypography
+                  variant="button"
+                  fontWeight="medium"
+                  color={light ? "white" : "dark"}
+                >
+                  Sign Out
+                </SoftTypography>
               </IconButton>
               {renderMenu()}
             </SoftBox>

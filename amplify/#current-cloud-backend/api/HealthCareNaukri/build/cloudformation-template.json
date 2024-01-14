@@ -4,16 +4,6 @@
             "Type": "String",
             "Default": "NONE"
         },
-        "AppSyncApiName": {
-            "Type": "String",
-            "Default": "AppSyncSimpleTransform"
-        },
-        "authRoleName": {
-            "Type": "String"
-        },
-        "unauthRoleName": {
-            "Type": "String"
-        },
         "DynamoDBModelTableReadIOPS": {
             "Type": "Number",
             "Default": 5,
@@ -50,6 +40,16 @@
                 "false"
             ],
             "Description": "Enable server side encryption powered by KMS."
+        },
+        "AppSyncApiName": {
+            "Type": "String",
+            "Default": "AppSyncSimpleTransform"
+        },
+        "authRoleName": {
+            "Type": "String"
+        },
+        "unauthRoleName": {
+            "Type": "String"
         },
         "S3DeploymentBucket": {
             "Type": "String",
@@ -123,7 +123,7 @@
                     ]
                 },
                 "Description": "api key description",
-                "Expires": 1705083829
+                "Expires": 1706975509
             }
         },
         "GraphQLAPINONEDS95A13CF0": {
@@ -572,12 +572,6 @@
                     },
                     "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
                         "Ref": "unauthRoleName"
-                    },
-                    "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPINONEDS95A13CF0",
-                            "Name"
-                        ]
                     },
                     "referencetotransformerrootstackJobCategoryNestedStackJobCategoryNestedStackResource0308F9F6OutputstransformerrootstackJobCategoryMutationcreateJobCategoryinit0FunctionMutationcreateJobCategoryinit0FunctionAppSyncFunction1137AB01FunctionId": {
                         "Fn::GetAtt": [
