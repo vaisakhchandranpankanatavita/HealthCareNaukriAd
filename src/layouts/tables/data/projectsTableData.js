@@ -15,6 +15,25 @@ import logoSlack from "assets/images/small-logos/logo-slack.svg";
 import logoWebDev from "assets/images/small-logos/logo-webdev.svg";
 import logoXD from "assets/images/small-logos/logo-xd.svg";
 
+
+// Data
+import data from "layouts/dashboard/components/Projects/data";
+import { DataStore } from 'aws-amplify/datastore';
+import { UserProfile } from '../../../../src/models';
+
+  const fetchData = async () => {
+    try {
+      const models = await DataStore.query(UserProfile);
+      console.log(models); // Use the fetched models here
+      return models;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  // Call the async function
+ const modelData = fetchData();
+
+
 function Completion({ value, color }) {
   return (
     <SoftBox display="flex" alignItems="center">
@@ -36,11 +55,11 @@ const action = (
 
 const projectsTableData = {
   columns: [
-    { name: "project", align: "left" },
-    { name: "budget", align: "left" },
-    { name: "status", align: "left" },
-    { name: "completion", align: "center" },
-    { name: "action", align: "center" },
+    { name: "name", align: "left" },
+    { name: "email", align: "left" },
+    { name: "phone", align: "left" },
+    { name: "state", align: "center" },
+    { name: "date", align: "center" },
   ],
 
   rows: [

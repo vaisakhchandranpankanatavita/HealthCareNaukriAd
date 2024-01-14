@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "HealthCareNaukri",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-12-13T18:23:42.396Z"
+}

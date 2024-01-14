@@ -1,0 +1,774 @@
+type JobCategory @aws_iam @aws_api_key {
+  id: ID!
+  category_name: String!
+  status: Boolean!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Application @aws_iam @aws_api_key {
+  id: ID!
+  user_id: String!
+  job_id: String!
+  status: Boolean!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Job @aws_iam @aws_api_key {
+  id: ID!
+  recruiter_name: String
+  phone: String
+  title: String
+  description: String
+  location: String
+  email: AWSEmail
+  city: String
+  state: String
+  country: String
+  qualification: String
+  experience_required: Int
+  skills_required: [String]
+  category: String
+  status: String
+  approved: Boolean!
+  recruiterID: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Recruiter @aws_iam @aws_api_key {
+  id: ID!
+  hospital_name: String!
+  contact_name: String!
+  email: AWSEmail!
+  land_line: String
+  mobile: AWSPhone!
+  password: String!
+  address: String
+  city: String
+  state: String
+  country: String
+  photo: AWSURL
+  website: AWSURL
+  facebook: AWSURL
+  twitter: AWSURL
+  recruiter_details: String
+  approved: Boolean!
+  Jobs(filter: ModelJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelJobConnection
+  is_super_admin: Boolean!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Experience @aws_iam @aws_api_key {
+  hospital_name: String
+  designation: String
+  no_of_years: Int
+}
+
+type UserProfile @aws_iam @aws_api_key {
+  id: ID!
+  name: String!
+  email: AWSEmail!
+  phone: AWSPhone!
+  country: String!
+  state: String!
+  dob: AWSDate!
+  nursing_council: String
+  additional_qualification: String
+  experience: [Experience]
+  resume: AWSURL
+  photo: AWSURL
+  applied_jobs: [ID]
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelJobCategoryConnection @aws_api_key @aws_iam {
+  items: [JobCategory]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelJobCategoryFilterInput {
+  id: ModelIDInput
+  category_name: ModelStringInput
+  status: ModelBooleanInput
+  and: [ModelJobCategoryFilterInput]
+  or: [ModelJobCategoryFilterInput]
+  not: ModelJobCategoryFilterInput
+  _deleted: ModelBooleanInput
+}
+
+type Query {
+  getJobCategory(id: ID!): JobCategory @aws_api_key @aws_iam
+  listJobCategories(filter: ModelJobCategoryFilterInput, limit: Int, nextToken: String): ModelJobCategoryConnection @aws_api_key @aws_iam
+  syncJobCategories(filter: ModelJobCategoryFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelJobCategoryConnection @aws_api_key @aws_iam
+  getApplication(id: ID!): Application @aws_api_key @aws_iam
+  listApplications(filter: ModelApplicationFilterInput, limit: Int, nextToken: String): ModelApplicationConnection @aws_api_key @aws_iam
+  syncApplications(filter: ModelApplicationFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelApplicationConnection @aws_api_key @aws_iam
+  getJob(id: ID!): Job @aws_api_key @aws_iam
+  listJobs(filter: ModelJobFilterInput, limit: Int, nextToken: String): ModelJobConnection @aws_api_key @aws_iam
+  syncJobs(filter: ModelJobFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelJobConnection @aws_api_key @aws_iam
+  jobsByRecruiterID(recruiterID: ID!, sortDirection: ModelSortDirection, filter: ModelJobFilterInput, limit: Int, nextToken: String): ModelJobConnection @aws_api_key @aws_iam
+  getRecruiter(id: ID!): Recruiter @aws_api_key @aws_iam
+  listRecruiters(filter: ModelRecruiterFilterInput, limit: Int, nextToken: String): ModelRecruiterConnection @aws_api_key @aws_iam
+  syncRecruiters(filter: ModelRecruiterFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelRecruiterConnection @aws_api_key @aws_iam
+  getUserProfile(id: ID!): UserProfile @aws_api_key @aws_iam
+  listUserProfiles(filter: ModelUserProfileFilterInput, limit: Int, nextToken: String): ModelUserProfileConnection @aws_api_key @aws_iam
+  syncUserProfiles(filter: ModelUserProfileFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUserProfileConnection @aws_api_key @aws_iam
+}
+
+input ModelJobCategoryConditionInput {
+  category_name: ModelStringInput
+  status: ModelBooleanInput
+  and: [ModelJobCategoryConditionInput]
+  or: [ModelJobCategoryConditionInput]
+  not: ModelJobCategoryConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateJobCategoryInput {
+  id: ID
+  category_name: String!
+  status: Boolean!
+  _version: Int
+}
+
+input UpdateJobCategoryInput {
+  id: ID!
+  category_name: String
+  status: Boolean
+  _version: Int
+}
+
+input DeleteJobCategoryInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createJobCategory(input: CreateJobCategoryInput!, condition: ModelJobCategoryConditionInput): JobCategory @aws_api_key @aws_iam
+  updateJobCategory(input: UpdateJobCategoryInput!, condition: ModelJobCategoryConditionInput): JobCategory @aws_api_key @aws_iam
+  deleteJobCategory(input: DeleteJobCategoryInput!, condition: ModelJobCategoryConditionInput): JobCategory @aws_api_key @aws_iam
+  createApplication(input: CreateApplicationInput!, condition: ModelApplicationConditionInput): Application @aws_api_key @aws_iam
+  updateApplication(input: UpdateApplicationInput!, condition: ModelApplicationConditionInput): Application @aws_api_key @aws_iam
+  deleteApplication(input: DeleteApplicationInput!, condition: ModelApplicationConditionInput): Application @aws_api_key @aws_iam
+  createJob(input: CreateJobInput!, condition: ModelJobConditionInput): Job @aws_api_key @aws_iam
+  updateJob(input: UpdateJobInput!, condition: ModelJobConditionInput): Job @aws_api_key @aws_iam
+  deleteJob(input: DeleteJobInput!, condition: ModelJobConditionInput): Job @aws_api_key @aws_iam
+  createRecruiter(input: CreateRecruiterInput!, condition: ModelRecruiterConditionInput): Recruiter @aws_api_key @aws_iam
+  updateRecruiter(input: UpdateRecruiterInput!, condition: ModelRecruiterConditionInput): Recruiter @aws_api_key @aws_iam
+  deleteRecruiter(input: DeleteRecruiterInput!, condition: ModelRecruiterConditionInput): Recruiter @aws_api_key @aws_iam
+  createUserProfile(input: CreateUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+  updateUserProfile(input: UpdateUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+  deleteUserProfile(input: DeleteUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionJobCategoryFilterInput {
+  id: ModelSubscriptionIDInput
+  category_name: ModelSubscriptionStringInput
+  status: ModelSubscriptionBooleanInput
+  and: [ModelSubscriptionJobCategoryFilterInput]
+  or: [ModelSubscriptionJobCategoryFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type Subscription {
+  onCreateJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["createJobCategory"]) @aws_api_key @aws_iam
+  onUpdateJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["updateJobCategory"]) @aws_api_key @aws_iam
+  onDeleteJobCategory(filter: ModelSubscriptionJobCategoryFilterInput): JobCategory @aws_subscribe(mutations: ["deleteJobCategory"]) @aws_api_key @aws_iam
+  onCreateApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["createApplication"]) @aws_api_key @aws_iam
+  onUpdateApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["updateApplication"]) @aws_api_key @aws_iam
+  onDeleteApplication(filter: ModelSubscriptionApplicationFilterInput): Application @aws_subscribe(mutations: ["deleteApplication"]) @aws_api_key @aws_iam
+  onCreateJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["createJob"]) @aws_api_key @aws_iam
+  onUpdateJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["updateJob"]) @aws_api_key @aws_iam
+  onDeleteJob(filter: ModelSubscriptionJobFilterInput): Job @aws_subscribe(mutations: ["deleteJob"]) @aws_api_key @aws_iam
+  onCreateRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["createRecruiter"]) @aws_api_key @aws_iam
+  onUpdateRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["updateRecruiter"]) @aws_api_key @aws_iam
+  onDeleteRecruiter(filter: ModelSubscriptionRecruiterFilterInput): Recruiter @aws_subscribe(mutations: ["deleteRecruiter"]) @aws_api_key @aws_iam
+  onCreateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["createUserProfile"]) @aws_api_key @aws_iam
+  onUpdateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["updateUserProfile"]) @aws_api_key @aws_iam
+  onDeleteUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["deleteUserProfile"]) @aws_api_key @aws_iam
+}
+
+type ModelApplicationConnection @aws_api_key @aws_iam {
+  items: [Application]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelApplicationFilterInput {
+  id: ModelIDInput
+  user_id: ModelStringInput
+  job_id: ModelStringInput
+  status: ModelBooleanInput
+  and: [ModelApplicationFilterInput]
+  or: [ModelApplicationFilterInput]
+  not: ModelApplicationFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelApplicationConditionInput {
+  user_id: ModelStringInput
+  job_id: ModelStringInput
+  status: ModelBooleanInput
+  and: [ModelApplicationConditionInput]
+  or: [ModelApplicationConditionInput]
+  not: ModelApplicationConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateApplicationInput {
+  id: ID
+  user_id: String!
+  job_id: String!
+  status: Boolean!
+  _version: Int
+}
+
+input UpdateApplicationInput {
+  id: ID!
+  user_id: String
+  job_id: String
+  status: Boolean
+  _version: Int
+}
+
+input DeleteApplicationInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionApplicationFilterInput {
+  id: ModelSubscriptionIDInput
+  user_id: ModelSubscriptionStringInput
+  job_id: ModelSubscriptionStringInput
+  status: ModelSubscriptionBooleanInput
+  and: [ModelSubscriptionApplicationFilterInput]
+  or: [ModelSubscriptionApplicationFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type ModelJobConnection @aws_api_key @aws_iam {
+  items: [Job]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelJobFilterInput {
+  id: ModelIDInput
+  recruiter_name: ModelStringInput
+  phone: ModelStringInput
+  title: ModelStringInput
+  description: ModelStringInput
+  location: ModelStringInput
+  email: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  country: ModelStringInput
+  qualification: ModelStringInput
+  experience_required: ModelIntInput
+  skills_required: ModelStringInput
+  category: ModelStringInput
+  status: ModelStringInput
+  approved: ModelBooleanInput
+  recruiterID: ModelIDInput
+  and: [ModelJobFilterInput]
+  or: [ModelJobFilterInput]
+  not: ModelJobFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelJobConditionInput {
+  recruiter_name: ModelStringInput
+  phone: ModelStringInput
+  title: ModelStringInput
+  description: ModelStringInput
+  location: ModelStringInput
+  email: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  country: ModelStringInput
+  qualification: ModelStringInput
+  experience_required: ModelIntInput
+  skills_required: ModelStringInput
+  category: ModelStringInput
+  status: ModelStringInput
+  approved: ModelBooleanInput
+  recruiterID: ModelIDInput
+  and: [ModelJobConditionInput]
+  or: [ModelJobConditionInput]
+  not: ModelJobConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateJobInput {
+  id: ID
+  recruiter_name: String
+  phone: String
+  title: String
+  description: String
+  location: String
+  email: AWSEmail
+  city: String
+  state: String
+  country: String
+  qualification: String
+  experience_required: Int
+  skills_required: [String]
+  category: String
+  status: String
+  approved: Boolean!
+  recruiterID: ID!
+  _version: Int
+}
+
+input UpdateJobInput {
+  id: ID!
+  recruiter_name: String
+  phone: String
+  title: String
+  description: String
+  location: String
+  email: AWSEmail
+  city: String
+  state: String
+  country: String
+  qualification: String
+  experience_required: Int
+  skills_required: [String]
+  category: String
+  status: String
+  approved: Boolean
+  recruiterID: ID
+  _version: Int
+}
+
+input DeleteJobInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionJobFilterInput {
+  id: ModelSubscriptionIDInput
+  recruiter_name: ModelSubscriptionStringInput
+  phone: ModelSubscriptionStringInput
+  title: ModelSubscriptionStringInput
+  description: ModelSubscriptionStringInput
+  location: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  city: ModelSubscriptionStringInput
+  state: ModelSubscriptionStringInput
+  country: ModelSubscriptionStringInput
+  qualification: ModelSubscriptionStringInput
+  experience_required: ModelSubscriptionIntInput
+  skills_required: ModelSubscriptionStringInput
+  category: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  approved: ModelSubscriptionBooleanInput
+  recruiterID: ModelSubscriptionIDInput
+  and: [ModelSubscriptionJobFilterInput]
+  or: [ModelSubscriptionJobFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type ModelRecruiterConnection @aws_api_key @aws_iam {
+  items: [Recruiter]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelRecruiterFilterInput {
+  id: ModelIDInput
+  hospital_name: ModelStringInput
+  contact_name: ModelStringInput
+  email: ModelStringInput
+  land_line: ModelStringInput
+  mobile: ModelStringInput
+  password: ModelStringInput
+  address: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  country: ModelStringInput
+  photo: ModelStringInput
+  website: ModelStringInput
+  facebook: ModelStringInput
+  twitter: ModelStringInput
+  recruiter_details: ModelStringInput
+  approved: ModelBooleanInput
+  is_super_admin: ModelBooleanInput
+  and: [ModelRecruiterFilterInput]
+  or: [ModelRecruiterFilterInput]
+  not: ModelRecruiterFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelRecruiterConditionInput {
+  hospital_name: ModelStringInput
+  contact_name: ModelStringInput
+  email: ModelStringInput
+  land_line: ModelStringInput
+  mobile: ModelStringInput
+  password: ModelStringInput
+  address: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  country: ModelStringInput
+  photo: ModelStringInput
+  website: ModelStringInput
+  facebook: ModelStringInput
+  twitter: ModelStringInput
+  recruiter_details: ModelStringInput
+  approved: ModelBooleanInput
+  is_super_admin: ModelBooleanInput
+  and: [ModelRecruiterConditionInput]
+  or: [ModelRecruiterConditionInput]
+  not: ModelRecruiterConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateRecruiterInput {
+  id: ID
+  hospital_name: String!
+  contact_name: String!
+  email: AWSEmail!
+  land_line: String
+  mobile: AWSPhone!
+  password: String!
+  address: String
+  city: String
+  state: String
+  country: String
+  photo: AWSURL
+  website: AWSURL
+  facebook: AWSURL
+  twitter: AWSURL
+  recruiter_details: String
+  approved: Boolean!
+  is_super_admin: Boolean!
+  _version: Int
+}
+
+input UpdateRecruiterInput {
+  id: ID!
+  hospital_name: String
+  contact_name: String
+  email: AWSEmail
+  land_line: String
+  mobile: AWSPhone
+  password: String
+  address: String
+  city: String
+  state: String
+  country: String
+  photo: AWSURL
+  website: AWSURL
+  facebook: AWSURL
+  twitter: AWSURL
+  recruiter_details: String
+  approved: Boolean
+  is_super_admin: Boolean
+  _version: Int
+}
+
+input DeleteRecruiterInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionRecruiterFilterInput {
+  id: ModelSubscriptionIDInput
+  hospital_name: ModelSubscriptionStringInput
+  contact_name: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  land_line: ModelSubscriptionStringInput
+  mobile: ModelSubscriptionStringInput
+  password: ModelSubscriptionStringInput
+  address: ModelSubscriptionStringInput
+  city: ModelSubscriptionStringInput
+  state: ModelSubscriptionStringInput
+  country: ModelSubscriptionStringInput
+  photo: ModelSubscriptionStringInput
+  website: ModelSubscriptionStringInput
+  facebook: ModelSubscriptionStringInput
+  twitter: ModelSubscriptionStringInput
+  recruiter_details: ModelSubscriptionStringInput
+  approved: ModelSubscriptionBooleanInput
+  is_super_admin: ModelSubscriptionBooleanInput
+  and: [ModelSubscriptionRecruiterFilterInput]
+  or: [ModelSubscriptionRecruiterFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+input ExperienceInput {
+  hospital_name: String
+  designation: String
+  no_of_years: Int
+}
+
+type ModelUserProfileConnection @aws_api_key @aws_iam {
+  items: [UserProfile]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUserProfileFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  email: ModelStringInput
+  phone: ModelStringInput
+  country: ModelStringInput
+  state: ModelStringInput
+  dob: ModelStringInput
+  nursing_council: ModelStringInput
+  additional_qualification: ModelStringInput
+  resume: ModelStringInput
+  photo: ModelStringInput
+  applied_jobs: ModelIDInput
+  and: [ModelUserProfileFilterInput]
+  or: [ModelUserProfileFilterInput]
+  not: ModelUserProfileFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelUserProfileConditionInput {
+  name: ModelStringInput
+  email: ModelStringInput
+  phone: ModelStringInput
+  country: ModelStringInput
+  state: ModelStringInput
+  dob: ModelStringInput
+  nursing_council: ModelStringInput
+  additional_qualification: ModelStringInput
+  resume: ModelStringInput
+  photo: ModelStringInput
+  applied_jobs: ModelIDInput
+  and: [ModelUserProfileConditionInput]
+  or: [ModelUserProfileConditionInput]
+  not: ModelUserProfileConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateUserProfileInput {
+  id: ID
+  name: String!
+  email: AWSEmail!
+  phone: AWSPhone!
+  country: String!
+  state: String!
+  dob: AWSDate!
+  nursing_council: String
+  additional_qualification: String
+  experience: [ExperienceInput]
+  resume: AWSURL
+  photo: AWSURL
+  applied_jobs: [ID]
+  _version: Int
+}
+
+input UpdateUserProfileInput {
+  id: ID!
+  name: String
+  email: AWSEmail
+  phone: AWSPhone
+  country: String
+  state: String
+  dob: AWSDate
+  nursing_council: String
+  additional_qualification: String
+  experience: [ExperienceInput]
+  resume: AWSURL
+  photo: AWSURL
+  applied_jobs: [ID]
+  _version: Int
+}
+
+input DeleteUserProfileInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionUserProfileFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  phone: ModelSubscriptionStringInput
+  country: ModelSubscriptionStringInput
+  state: ModelSubscriptionStringInput
+  dob: ModelSubscriptionStringInput
+  nursing_council: ModelSubscriptionStringInput
+  additional_qualification: ModelSubscriptionStringInput
+  resume: ModelSubscriptionStringInput
+  photo: ModelSubscriptionStringInput
+  applied_jobs: ModelSubscriptionIDInput
+  and: [ModelSubscriptionUserProfileFilterInput]
+  or: [ModelSubscriptionUserProfileFilterInput]
+  _deleted: ModelBooleanInput
+}

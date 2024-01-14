@@ -1,0 +1,91 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-healthcarenaukri-staging-175045-authRole",
+      "UnauthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukri-staging-175045-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::858361418733:role/amplify-healthcarenaukri-staging-175045-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-healthcarenaukri-staging-175045-deployment",
+      "UnauthRoleName": "amplify-healthcarenaukri-staging-175045-unauthRole",
+      "StackName": "amplify-healthcarenaukri-staging-175045",
+      "StackId": "arn:aws:cloudformation:us-east-1:858361418733:stack/amplify-healthcarenaukri-staging-175045/244fd600-99e0-11ee-8c1a-0e10f4f07403",
+      "AmplifyAppId": "d2a18z9hp7go46"
+    }
+  },
+  "api": {
+    "HealthCareNaukri": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
+        },
+        "GraphQLAPIIdOutput": "egfq2urmxrhyzndhf5vhrgakvu",
+        "GraphQLAPIEndpointOutput": "https://ssbxwt6vfnejle75sz6ieenxnm.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-4uh7fs73xzhxbnz5kblw33t4su"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-01-14T13:23:50.399Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukri-staging-175045-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiHealthCareNaukri"
+      }
+    }
+  },
+  "auth": {
+    "HealthCareNaukri": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-healthcarenaukri-staging-175045-deployment/amplify-cfn-templates/auth/HealthCareNaukri-cloudformation-template.json",
+        "logicalId": "authHealthCareNaukri"
+      },
+      "lastPushTimeStamp": "2024-01-14T13:23:50.404Z",
+      "output": {
+        "UserPoolId": "us-east-1_xGQ4n7p2l",
+        "AppClientIDWeb": "8ptm3cc9mi7uphbb75vn5n350",
+        "AppClientID": "7g535a5781bh0u1o9r7eof64k2",
+        "IdentityPoolId": "us-east-1:a34d2662-cb2c-4b0f-9d0f-92887b85489d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:858361418733:userpool/us-east-1_xGQ4n7p2l",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "HealthCareNaukri"
+      },
+      "lastPushDirHash": "xmccugTkRqGvXaaChKWQSQV2JEU="
+    }
+  }
+}

@@ -15,7 +15,7 @@
 
 ## [3.1.0] 2022-03-04
 
-### Bug fixing
+### Bug fixing..
 
 - Momoized the context provider values
 - Fix the conditionally used of useContext for SoftPagination component

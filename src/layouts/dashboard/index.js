@@ -41,6 +41,7 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
+import JobCategoryCreateForm from "ui-components/JobCategoryCreateForm";
 
 function Dashboard() {
   const { size } = typography;
@@ -54,33 +55,29 @@ function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "today's money" }}
-                count="$53,000"
-                percentage={{ color: "success", text: "+55%" }}
+                title={{ text: "Total Users registered" }}
+                count="1,000"
                 icon={{ color: "info", component: "paid" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "today's users" }}
+                title={{ text: "Totol recruters" }}
                 count="2,300"
-                percentage={{ color: "success", text: "+3%" }}
                 icon={{ color: "info", component: "public" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "new clients" }}
+                title={{ text: "Applications" }}
                 count="+3,462"
-                percentage={{ color: "error", text: "-2%" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "sales" }}
+                title={{ text: "jobs" }}
                 count="$103,430"
-                percentage={{ color: "success", text: "+5%" }}
                 icon={{
                   color: "info",
                   component: "shopping_cart",
@@ -89,7 +86,7 @@ function Dashboard() {
             </Grid>
           </Grid>
         </SoftBox>
-        <SoftBox mb={3}>
+      {/*   <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={7}>
               <BuildByDevelopers />
@@ -98,8 +95,8 @@ function Dashboard() {
               <WorkWithTheRockets />
             </Grid>
           </Grid>
-        </SoftBox>
-        <SoftBox mb={3}>
+        </SoftBox> */}
+       {/*  <SoftBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5}>
               <ReportsBarChart
@@ -134,14 +131,14 @@ function Dashboard() {
               />
             </Grid>
           </Grid>
-        </SoftBox>
+        </SoftBox> */}
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12} md={6} lg={12}>
             <Projects />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />
-          </Grid>
+          </Grid> */}
         </Grid>
       </SoftBox>
       <Footer />

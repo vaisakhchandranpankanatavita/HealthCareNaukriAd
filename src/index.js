@@ -18,14 +18,28 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
 
+import { Amplify } from 'aws-amplify';
+
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import config from './amplifyconfiguration.json';
+import { Authenticator } from '@aws-amplify/ui-react';
 // Soft UI Dashboard React Context Provider
 import { SoftUIControllerProvider } from "context";
 
+Amplify.configure(config);
+
+const AppWithAuth =  () => (<Authenticator signUpAttributes={[
+  'name',
+  'email',
+  'phone_number'
+]}><App/></Authenticator>);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <BrowserRouter>
     <SoftUIControllerProvider>
-      <App />
+      <AppWithAuth />
     </SoftUIControllerProvider>
   </BrowserRouter>
 );
