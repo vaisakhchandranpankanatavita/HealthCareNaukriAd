@@ -38,6 +38,7 @@ import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
+
 // Custom styles for DashboardNavbar
 import {
   navbar,
@@ -60,7 +61,11 @@ import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 
 //Amplify
+import { Amplify } from 'aws-amplify';
+import awsconfig from '../../../aws-exports';
 import { signOut } from 'aws-amplify/auth';
+
+Amplify.configure(awsconfig);
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
